@@ -1,0 +1,154 @@
+<h2 id="基本文法">基本文法</h2>
+<h3 id="代入文">代入文</h3>
+<p>整数と文字列をそれぞれaという名前の変数とhogeという名前の変数に代入している。 文字列を代入する場合はダブルクオーテーション<code>&quot;</code>で囲む</p>
+<pre><code>&gt;&gt;&gt; a = 334
+&gt;&gt;&gt; hoge = &quot;Hello World&quot;</code></pre>
+<p>変数名をそのまま打ち込んでエンターキーを押すことで中身を確認</p>
+<pre><code>&gt;&gt;&gt; a
+334
+&gt;&gt;&gt; hoge
+Hello World</code></pre>
+<p>すでに使われている変数に再度代入することで値を上書き</p>
+<pre><code>&gt;&gt;&gt; f = 100
+&gt;&gt;&gt; f = 200
+&gt;&gt;&gt; f
+200
+</code></pre>
+<hr />
+<h3 id="四則演算">四則演算</h3>
+<p>電卓のような計算を行うことができる</p>
+<ul>
+<li><p>足し算と引き算</p>
+<pre><code>&gt;&gt;&gt; 114 + 514
+628
+&gt;&gt;&gt; 810 - 36
+774</code></pre></li>
+<li><p>乗算</p>
+<pre><code>&gt;&gt;&gt; 2 * 1.5
+3.0</code></pre></li>
+<li><p>除算 (Python3.*)</p>
+<pre><code>&gt;&gt;&gt; 5 / 2
+2.5</code></pre></li>
+<li><p>除算 (Python2.*)</p></li>
+</ul>
+<p>値が2つとも整数型(int)である場合は結果の小数点以下が切り捨てられる</p>
+<pre><code>&gt;&gt;&gt; 5 / 2
+2</code></pre>
+<p>どちらかが浮動小数型(float)であれば普通に計算される。 <code>5.</code>や<code>5.0</code>などで指定すれば整数ではなく小数として扱われる</p>
+<pre><code>&gt;&gt;&gt; 5. / 2
+2.5</code></pre>
+<ul>
+<li><p>割った余り</p>
+<pre><code>&gt;&gt;&gt; 19 % 4
+3</code></pre></li>
+<li><p>変数を使った複雑な計算 カッコを使うことで計算の優先順位を変えることができる</p></li>
+</ul>
+<p>上底a, 下底b, 高さc である台形の面積を変数dに代入する処理</p>
+<pre><code>&gt;&gt;&gt; a = 3
+&gt;&gt;&gt; b = 5
+&gt;&gt;&gt; c = 2.4
+&gt;&gt;&gt; d = (a+b)*c/2
+&gt;&gt;&gt; d
+9.6</code></pre>
+<hr />
+<h3 id="print関数">print関数</h3>
+<p>変数に代入された値を画面に出力します。</p>
+<pre><code>&gt;&gt;&gt; print(a)
+334
+&gt;&gt;&gt;print(hoge)
+Hello World</code></pre>
+<p>文字列をそのまま引数にとって画面に出力することもできます</p>
+<pre><code>&gt;&gt;&gt; print(&quot;Boy Next Door&quot;)
+Boy Next Door</code></pre>
+<p>文字列の中に変数を埋め込みたいときは以下のように書く</p>
+<pre><code>&gt;&gt;&gt; nok = 171
+&gt;&gt;&gt; l = &quot;ナオキ&quot;
+&gt;&gt;&gt; print( &quot;名前は%dセンチ, 身長は%sです&quot; % (nok,l) )
+名前は171センチ, 身長はナオキです</code></pre>
+<p>%記号の直後に付く文字は変数に格納された<strong>値の型</strong>によって決まる</p>
+<ul>
+<li>文字列 %s</li>
+<li>整数 %d</li>
+<li>浮動小数 %f</li>
+</ul>
+<hr />
+<h3 id="リスト">リスト</h3>
+<p>ひとつの変数に複数の値を格納したい場合に便利</p>
+<p><code>[]</code>のなかにコンマで区切ってデータを置く。文字列や整数など型の違うものが混在してもOK</p>
+<pre><code>順番        0    1     2  
+&gt;&gt;&gt; inm = [810,&quot;MUR&quot;,&quot;KMR&quot;]</code></pre>
+<p>リストの中のデータを参照する場合は変数名に加えて添字(インデックス)を指定する。添字はリストの左端から0で始まる</p>
+<p>よって、1番目の値を参照するには<code>0</code>,100番目の値を参照するには<code>101</code>を指定する。</p>
+<pre><code>&gt;&gt;&gt; print(inm[1])
+MUR</code></pre>
+<p>空のリストも作成できる</p>
+<pre><code>hoge = []</code></pre>
+<ul>
+<li>値の削除 添字で指定するときは (<code>del</code>関数) <code>&gt;&gt;&gt; a = [1,2,3]   &gt;&gt;&gt; a   [1,2,3]   &gt;&gt;&gt; del(a[1])   [1,3]</code></li>
+</ul>
+<p>値そのものを指定して削除 (<code>remove</code> <strong>メソッド</strong> )</p>
+<p><code>&gt;&gt;&gt; b = [&quot;John&quot;,&quot;Ri&quot;,&quot;Echo&quot;]   &gt;&gt;&gt; b.remove(&quot;Ri&quot;)   &gt;&gt;&gt; b   [&quot;John&quot;,&quot;Echo&quot;]</code></p>
+<ul>
+<li>末尾への値の追加 (<code>append</code>関数) <code>&gt;&gt;&gt; c = [4,5]   &gt;&gt;&gt; c.append(&quot;devil&quot;)   &gt;&gt;&gt; c   [4,5,&quot;devil]</code></li>
+<li><p>値を任意の場所に追加 (<code>insert</code> 関数) <code>&gt;&gt;&gt; c    =     [ &quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot; ]               ^   ^   ^   ^   ^   指定位置        0   1   2   3   4   &gt;&gt;&gt; c.insert()</code></p></li>
+<li><p>リストを結合する 足し算記号で可能</p></li>
+</ul>
+<p><code>&gt;&gt;&gt; var1 = [&quot;b&quot;,&quot;c&quot;,&quot;d&quot;]   &gt;&gt;&gt; var2 = [&quot;a&quot;] + var1 + [&quot;e&quot;,&quot;f&quot;]   &gt;&gt;&gt; print(var2)   [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;,&quot;f&quot;]</code></p>
+<hr />
+<h3 id="辞書型">辞書型</h3>
+<p>リストと違って添字ではなく任意の値をキーとして設定する連想配列</p>
+<p>辞書の作成(英語の綴りをキーとした例)</p>
+<p><code>&gt;&gt;&gt; jisyo = {&quot;one&quot;:1,&quot;two&quot;:2,&quot;three&quot;:3}</code></p>
+<p>キーから値を指定して取り出す <code>&gt;&gt;&gt; jisyo[&quot;two&quot;]   2</code></p>
+<h3 id="for-文による繰り返し処理">for 文による繰り返し処理</h3>
+<p>リストLから要素を1つずつiに格納し、printで繰り返し出力する。 for文の下で1つ分インデントされた命令が繰り返される</p>
+<p><code>&gt;&gt;&gt; L = [&quot;AOK&quot;,&quot;KMR&quot;,&quot;RIM&quot;,&quot;MUR&quot;]    &gt;&gt;&gt; for i in L:    ...     print(i)    ...    AOK    KMR    RIM    MUR</code></p>
+<p>インデントは必ず<strong>スペース4つ分</strong>にすること</p>
+<p>リストNの要素を全て足しあわせ、その計算過程を出力 ``` &gt;&gt;&gt; sum = 0 &gt;&gt;&gt; N = [1,2,3,4,5,6] &gt;&gt;&gt; for i in N: ... sum = sum + i ... print(sum) ... 1 3 6 10 15 21</p>
+<p>```</p>
+<p>turtleモジュールで模様を書く</p>
+<p>一行目でタートルモジュールから全ての関数をインポートしている</p>
+<p>range(a,b,c)はaからb+1までcずつ増加するイテレータ(Python2.*はリスト)を返す</p>
+<p>circle(r)は半径rの円を書く</p>
+<p>keft(30)はカーソルを30°左に向ける</p>
+<p><code>&gt;&gt;&gt; from turtle import *   &gt;&gt;&gt; for i in range(0,360,30):   ...     circle(50)   ...     left(30)   ...</code></p>
+<h3 id="if文による条件分岐">if文による条件分岐</h3>
+<ul>
+<li>条件式
+<ul>
+<li><code>a == b</code> aとbが等しい</li>
+<li><code>a != b</code> aとbが等しくない</li>
+<li><code>a &gt; b</code> <code>a &lt; b</code> 数学と同じ</li>
+<li><code>a &lt;= b</code> <code>a &gt;=b</code> aがb以下,aがb以上</li>
+<li><code>A and B</code> 条件式AとBが共に成り立つ</li>
+<li><code>A or B</code> 条件式AかBのどちらかが成り立つ</li>
+</ul></li>
+</ul>
+<p>``` &gt;&gt;&gt; if (条件式1): ... 条件式1を満たすときに実行される文 &gt;&gt;&gt; elif (条件式2): ... 条件式2が満たされず、条件式2が満たされるときに実行される文 &gt;&gt;&gt; else (条件式3): ... いずれの条件式にも合致しないとき実行される文</p>
+<p>```</p>
+<p>例</p>
+<p>``` &gt;&gt;&gt; a = 33 &gt;&gt;&gt; b = 4 &gt;&gt;&gt; if (a &gt; b): ... print(&quot;なんでや！&quot;) &gt;&gt;&gt; elif (a == b): ... print(&quot;これは教育やろなぁ&quot;) &gt;&gt;&gt; else: ... print(&quot;Vやねん&quot;)</p>
+<p>```</p>
+<h3 id="while文による繰り返し処理">while文による繰り返し処理</h3>
+<p>要素の取り出しではなく条件によるくりかえし <code>&gt;&gt;&gt; while(条件式):   ...     実行内容</code></p>
+<p>0.0~1.0までの乱数を足しあわせて、1以上になったら終了</p>
+<p>例:実行中は合計値sumと試行回数nを表示する <code>&gt;&gt;&gt; random   &gt;&gt;&gt; sum = 0.0   &gt;&gt;&gt; n = 0   &gt;&gt;&gt; while(sum &lt; 1):   ...    sum = sum + random.random()   ...    print(&quot;sum = %d, n = &quot;%(sum,n))</code></p>
+<p>breakを使うことでwhileから抜ける事ができる, cintinueでwhileの先頭からやり直すことができる</p>
+<p>Trueは常に真となる条件式,Flaseは偽となる</p>
+<p>例:0.01以下の場合は別のprint文を実行する <code>&gt;&gt;&gt; random   &gt;&gt;&gt; sum = 0.0   &gt;&gt;&gt; n = 0   &gt;&gt;&gt; while(True):   ...    c = random.random()   ...    sum = sum + c   ...    if (sum &gt; 1.0):   ...        print(&quot;sumは1.0以上になりました&quot;)   ...        break   ...    elif (c &lt;= 0.01):   ...        print(&quot;なんと0.01以下が出ました!&quot;)   ...        continue   ...    print(&quot;sum = %d, n = &quot;%(sum,n))</code></p>
+<h2 id="関数の作成">関数の作成</h2>
+<p>与えられた引数a,bを足しあわせて結果を返す関数addの作成</p>
+<p>引数はいくつ合ってもいいが戻り値は一つだけ</p>
+<p><code>&gt;&gt;&gt; def 関数名(引数1,引数2,...):   ...     実行内容   ...     return(戻り値)</code></p>
+<p><code>&gt;&gt;&gt; def add(a,b):   ...     print(&quot;%d + %d は %d ですぅ&quot;%(a,b,a+b))   ...     return(a+b)</code></p>
+<p>関数の使用 <code>&gt;&gt;&gt; c = add(2,3)   2 + 3 は 5 ですぅ   &gt;&gt;&gt; c   5</code></p>
+<p>与えられた数が素数であるかどうか判定する関数isPrimeと、与えられた数以下の素数がいくつあるかかぞえる関数primeNum ``` &gt;&gt;&gt; isPrinme(n): ... for i in range(2,n): ... if(n%i == 0): ... return False ... return True</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def primeNum(N): ... num = 0 ... for i in range(2,N+1): ... if( isPrime(i) ): ... print(&quot;%dは素数!&quot;%(i)) ... num = num + 1 ...<br />
+... print(&quot;素数は%d個ありました&quot;%(num)) ```</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="section"></h3>
